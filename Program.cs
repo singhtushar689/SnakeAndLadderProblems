@@ -2,9 +2,11 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            int PlayerPosition = 0;
+            Random random = new Random();  
+            int RollingDice = random.Next(1, 7);
+            Console.WriteLine(RollingDice);
         }
     }
 }
