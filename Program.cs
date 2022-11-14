@@ -9,17 +9,9 @@ namespace SnakeLadderGame
         public const int snake = 2;
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-
-            Random random = new Random();  
-            int RollingDice = random.Next(1, 7);
-            Console.WriteLine(RollingDice);
-            int PlayerPosition = 0;
-            PlayerPosition += RollingDice;
-            Console.WriteLine("Player is at " + PlayerPosition + " position ");
-=======
             Console.WriteLine("Welcome to Snake and Ladder Game");
             int position = 0;
+            int diceCount = 0;
             while (position < win)
             {
                 Random random = new Random();
@@ -29,6 +21,11 @@ namespace SnakeLadderGame
                 {
                     case ladder:
                         position += diceOutcome;
+                        if (position + diceOutcome <= 100)
+                        {
+                            position += diceOutcome;
+                        }
+
                         break;
                     case snake:
                         if (position - diceOutcome < 0)
@@ -42,9 +39,17 @@ namespace SnakeLadderGame
                         break;
                     default:
                         break;
+
+
                 }
+                diceCount++;
+                Console.WriteLine("Current Position of the player is" + position);
+            
+                 if (position == win)
+                 {
+                Console.WriteLine("Player Won the game with " + diceCount +"Times");
+                 }
             }
->>>>>>> UC4WinningPosition
         }
     }
-}
+} 
