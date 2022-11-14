@@ -2,16 +2,41 @@
 {
     internal class Program
     {
+        public const int win = 100;
+        public const int ladder = 1;
+        public const int snake = 2;
         public static void Main(string[] args)
         {
-<<<<<<< HEAD
-            Random random = new Random();  
-            int RollingDice = random.Next(1, 7);
-            Console.WriteLine(RollingDice);
-=======
-            int PlayerPosition = 0;
-            Console.WriteLine("Player is at " + PlayerPosition + " position ");
->>>>>>> UC1SnakeLadder
+            Console.WriteLine("Welcome to Snake and Ladder Game");
+            int position = 0;
+            while (position < win)
+            {
+                Random random = new Random();
+                int diceOutcome = random.Next(1, 7);
+                int checkOptions = random.Next(0, 3);
+                switch (checkOptions)
+                {
+                    case ladder:
+                        if (position + diceOutcome <= 100)
+                        {
+                            position += diceOutcome;
+                        }
+                        break;
+                    case snake:
+                        if (position - diceOutcome < 0)
+                        {
+                            position = 0;
+                        }
+                        else
+                        {
+                            position -= diceOutcome;
+                        }
+                        break;
+                    default:
+                        break;
+
+                }
+            }
         }
     }
-}
+} 
