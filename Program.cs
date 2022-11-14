@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Collections.Specialized.BitVector32;
 
 namespace SnakeLadderGame
 {
@@ -21,21 +22,20 @@ namespace SnakeLadderGame
                 {
                     case ladder:
                         position += diceOutcome;
-                        if (position + diceOutcome <= 100)
+                        if (position > 100)
                         {
-                            position += diceOutcome;
+                            position -= diceOutcome;
                         }
 
                         break;
                     case snake:
-                        if (position - diceOutcome < 0)
+                        position -= diceOutcome;
+                        if (position < 0)
                         {
                             position = 0;
                         }
-                        else
-                        {
-                            position -= diceOutcome;
-                        }
+                        
+                     
                         break;
                     default:
                         break;
@@ -44,11 +44,11 @@ namespace SnakeLadderGame
                 }
                 diceCount++;
                 Console.WriteLine("Current Position of the player is" + position);
-            
-                 if (position == win)
-                 {
-                Console.WriteLine("Player Won the game with " + diceCount +"Times");
-                 }
+
+                if (position == win)
+                {
+                Console.WriteLine("Player Won the game in " + diceCount + "Times");
+                }
             }
         }
     }
